@@ -1,0 +1,25 @@
+global:
+  scrape_interval:      15s
+  evaluation_interval:  15s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+        #  - alertmanager:9093
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: "jenkins"
+    metrics_path: /prometheus
+    static_configs:
+      - targets: ['192.168.1.126:8080']
+
+
+##################################### TENER EN CUENTA LA LINEA 22 LEER LA DOCUMENTACION DADA POR EL EQUIPO ESA IP ES LA MIA TIENEN QUE MIRAR LA DE USTEDES BORRAR ESTO CUANDO SE ORGANICE
